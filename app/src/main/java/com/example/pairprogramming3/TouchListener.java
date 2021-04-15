@@ -15,7 +15,8 @@ public class TouchListener implements View.OnTouchListener {
 
     public TouchListener(MainActivity ma) {
         this.mainActivity = ma;
-        //gestureDetectorCompat = new GestureDetectorCompat(this.mainActivity, new MyGestureListener());
+        gestureDetectorCompat = new GestureDetectorCompat(this.mainActivity, new MyGestureListener());
+        //onTouch()
     }
 
     @Override
@@ -24,12 +25,12 @@ public class TouchListener implements View.OnTouchListener {
         int maskedAction = motionEvent.getActionMasked();
         switch(maskedAction){
             case MotionEvent.ACTION_DOWN:
-
             case MotionEvent.ACTION_POINTER_DOWN:
-                //Log.d("TAG", "Action was DOwn");
+                Log.d("TAG", "Action was DOwn");
             case MotionEvent.ACTION_MOVE:
                 break;
             case MotionEvent.ACTION_UP:
+
             case MotionEvent.ACTION_POINTER_UP:
             case MotionEvent.ACTION_CANCEL:
                 break;
@@ -40,24 +41,21 @@ public class TouchListener implements View.OnTouchListener {
 
 
     private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            mainActivity.onSwipeDown();
-            return super.onDoubleTap(e);
-        }
-        /*
+
         @Override
         public boolean onDown(MotionEvent e) {
             mainActivity.onSwipeDown();
             return super.onDown(e);
         }
 
+        /*
         @Override
-        public void onSwipeUp(MotionEvent e) {
+        public boolean onUp(MotionEvent e) {
             mainActivity.onSwipeUp();
-            super.onLongPress(e);
+            return super.on(e);
         }
         */
+
     }
 
 }

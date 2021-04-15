@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,15 +30,20 @@ public class MainActivity extends AppCompatActivity {
         camB = (Button) findViewById(R.id.cameraBtn);
         pic = (ImageView) findViewById(R.id.imageView);
         touchListener = new TouchListener(this);
+
+        pic.setOnTouchListener(touchListener);
     }
 
 
     public void onSwipeDown() {
+        Log.v("hey", "working");
         pic.setRotation(pic.getRotation() + 180);
     }
     public void onSwipeUp(){
         //turn pic right side up
+        pic.setRotation(pic.getRotation() + 180);
     }
+
     public void onButton(View view) {
         Intent takePicIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(takePicIntent.resolveActivity(getPackageManager()) != null){
